@@ -1,0 +1,53 @@
+gradle -v
+gradle build
+gradle build --parallel
+gradle build --debug
+gradle dependencies
+gradle clean build
+gradle test
+gradle clean
+gradle wrapper
+./gradlew build
+./gradlew tasks
+./gradlew bootRun
+gradle tasks
+
+plugins {
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+-------build.gradle
+plugins {
+    id 'java'               // Apply the Java plugin
+    id 'application'        // Apply the Application plugin
+}
+
+repositories {
+    mavenCentral()          // Use Maven Central for dependencies
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.1-jre'  // Example dependency
+    testImplementation 'junit:junit:4.13.2'           // JUnit for testing
+}
+
+application {
+    mainClass = 'App'       // Specify the main class
+}
+-------settinga.gradle
+rootProject.name = 'multi-project-build'
+include 'module1', 'module2'
+-----
+task customTask {
+    doFirst {
+        println 'This runs first'
+    }
+    doLast {
+        println 'This runs last'
+    }
+}
